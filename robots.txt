@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://spashx.github.io/abyss.github.io/sitemap.xml

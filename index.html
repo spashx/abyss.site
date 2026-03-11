@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ── PRIMARY META ── -->
+  <title>Abyss -- Local-first RAG Engine for Codebases | Semantic Code Search via MCP</title>
+  <meta name="description" content="Abyss is a 100% offline, open-source RAG engine that indexes source code and documentation locally with Tree-sitter AST parsing, SCIP call-graph enrichment, and ChromaDB vector storage. Exposes semantic search via the Model Context Protocol (MCP). No cloud, no GPU, no data exfiltration." />
+  <meta name="keywords" content="RAG, retrieval augmented generation, semantic search, code search, MCP, Model Context Protocol, Tree-sitter, AST parsing, SCIP, call graph, ChromaDB, vector database, embeddings, LlamaIndex, local AI, offline AI, code indexing, codebase search, developer tools, open source, privacy, VS Code, Claude Desktop, Python, C#, TypeScript, Java, sentence-transformers, all-MiniLM-L6-v2" />
+  <meta name="author" content="spashx" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="googlebot" content="index, follow" />
+  <meta name="bingbot" content="index, follow" />
+  <meta name="theme-color" content="#0a0e1a" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="generator" content="Abyss" />
+  <link rel="canonical" href="https://spashx.github.io/abyss.github.io/" />
+
+  <!-- ── OPEN GRAPH (Facebook, LinkedIn, Discord, Slack, etc.) ── -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Abyss" />
+  <meta property="og:title" content="Abyss -- Local-first RAG Engine for Codebases" />
+  <meta property="og:description" content="100% offline semantic code search. Index your codebase with Tree-sitter AST parsing and SCIP call-graph enrichment, then query via MCP from VS Code or Claude Desktop. No cloud, no GPU required." />
+  <meta property="og:url" content="https://spashx.github.io/abyss.github.io/" />
+  <meta property="og:image" content="https://spashx.github.io/abyss.github.io/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Abyss -- Local-first RAG engine for semantic code search" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- ── TWITTER / X CARD ── -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Abyss -- Local-first RAG Engine for Codebases" />
+  <meta name="twitter:description" content="100% offline semantic code search. Tree-sitter AST parsing, SCIP enrichment, MCP protocol. No cloud, no GPU. Open source." />
+  <meta name="twitter:image" content="https://spashx.github.io/abyss.github.io/og-image.png" />
+  <meta name="twitter:image:alt" content="Abyss -- Local-first RAG engine for semantic code search" />
+
+  <!-- ── ADDITIONAL SOCIAL / DISCOVERY ── -->
+  <meta property="article:author" content="https://github.com/spashx" />
+  <meta name="application-name" content="Abyss" />
+  <meta name="apple-mobile-web-app-title" content="Abyss" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="format-detection" content="telephone=no" />
+
+  <!-- ── FAVICON ── -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2300ff88' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 2L2 7l10 5 10-5-10-5z'/%3E%3Cpath d='M2 17l10 5 10-5'/%3E%3Cpath d='M2 12l10 5 10-5'/%3E%3C/svg%3E" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+
+  <!-- ── JSON-LD STRUCTURED DATA ── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "SoftwareApplication",
+        "name": "Abyss",
+        "alternateName": "Abyss RAG Engine",
+        "description": "Local-first RAG engine that indexes source code and documentation, then exposes semantic search through the Model Context Protocol (MCP). 100% offline, no GPU required.",
+        "url": "https://spashx.github.io/abyss.github.io/",
+        "applicationCategory": "DeveloperApplication",
+        "applicationSubCategory": "Code Search",
+        "operatingSystem": "Windows, macOS, Linux",
+        "softwareRequirements": "Python 3.13",
+        "license": "https://www.gnu.org/licenses/gpl-3.0.html",
+        "isAccessibleForFree": true,
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "featureList": [
+          "Semantic code search via vector embeddings",
+          "Tree-sitter AST-aware code chunking for C#, Python, Java, TypeScript, JavaScript, HTML",
+          "SCIP call-graph enrichment with caller/callee relationships",
+          "MCP server with 8 tools and 3 resources",
+          "Universal document ingestion (PDF, DOCX, PPTX, images, Markdown, Jupyter)",
+          "ChromaDB persistent vector storage",
+          "100% offline -- no cloud APIs, no telemetry",
+          "No GPU required -- CPU-only with all-MiniLM-L6-v2",
+          "Advanced query filters (language, kind, file path, line range)",
+          "Per-file HTML debug reports for chunking diagnostics"
+        ],
+        "programmingLanguage": ["Python", "C#", "Java", "TypeScript", "JavaScript", "HTML"],
+        "codeRepository": "https://github.com/spashx/abyss",
+        "author": {
+          "@type": "Organization",
+          "name": "spashx",
+          "url": "https://github.com/spashx"
+        },
+        "image": "https://spashx.github.io/abyss.github.io/og-image.png"
+      },
+      {
+        "@type": "WebSite",
+        "name": "Abyss",
+        "url": "https://spashx.github.io/abyss.github.io/",
+        "description": "Official website for Abyss, a local-first RAG engine for semantic code search.",
+        "inLanguage": "en",
+        "publisher": {
+          "@type": "Organization",
+          "name": "spashx",
+          "url": "https://github.com/spashx"
+        }
+      },
+      {
+        "@type": "WebPage",
+        "name": "Abyss -- Local-first RAG Engine for Codebases",
+        "url": "https://spashx.github.io/abyss.github.io/",
+        "description": "Abyss indexes your source code and documentation locally with Tree-sitter and SCIP enrichment, then exposes semantic search via MCP.",
+        "isPartOf": {
+          "@type": "WebSite",
+          "name": "Abyss",
+          "url": "https://spashx.github.io/abyss.github.io/"
+        },
+        "breadcrumb": {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://spashx.github.io/abyss.github.io/"
+            }
+          ]
+        },
+        "mainEntity": {
+          "@type": "SoftwareApplication",
+          "name": "Abyss"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is Abyss?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Abyss is a local-first Retrieval-Augmented Generation (RAG) engine that indexes your source code and documentation, then exposes semantic search through the Model Context Protocol (MCP). It runs 100% offline with no GPU required."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does Abyss require a GPU?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Abyss runs efficiently on CPU using the quantized all-MiniLM-L6-v2 sentence-transformers model. No GPU or cloud API is required."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What programming languages does Abyss support?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Abyss supports AST-aware parsing for C#, Python, Java, TypeScript, JavaScript, and HTML via Tree-sitter grammars. It also indexes documents (PDF, DOCX, PPTX, Markdown), structured files (JSON, XML), and images via OCR."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does Abyss integrate with AI tools?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Abyss implements the Model Context Protocol (MCP) and integrates directly with VS Code (GitHub Copilot), Claude Desktop, and any MCP-compatible client. It provides 8 tools and 3 resources for semantic code search."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is Abyss free and open source?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Abyss is free and open source under the GNU GPLv3 license. The source code is available on GitHub."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <!-- ── PERFORMANCE HINTS ── -->
+  <link rel="dns-prefetch" href="https://cdn.tailwindcss.com" />
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+
+  <!-- Tailwind CSS (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            abyss: {
+              50:  '#e6f9ff',
+              100: '#b3ecff',
+              200: '#80dfff',
+              300: '#4dd2ff',
+              400: '#1ac5ff',
+              500: '#00b8e6',
+              600: '#008fb3',
+              700: '#006680',
+              800: '#003d4d',
+              900: '#00141a',
+              950: '#0a0e1a',
+            },
+            neon: '#00ff88',
+            neonDim: '#00cc6a',
+            surface: '#0d1117',
+            surfaceAlt: '#161b22',
+            border: '#21262d',
+          },
+          fontFamily: {
+            mono: ['"JetBrains Mono"', '"Fira Code"', 'Consolas', 'monospace'],
+            sans: ['"Inter"', 'system-ui', '-apple-system', 'sans-serif'],
+          },
+          animation: {
+            'fade-in': 'fadeIn 0.8s ease-out both',
+            'fade-up': 'fadeUp 0.8s ease-out both',
+            'pulse-glow': 'pulseGlow 3s ease-in-out infinite',
+            'slide-left': 'slideLeft 0.6s ease-out both',
+            'slide-right': 'slideRight 0.6s ease-out both',
+            'typing': 'typing 3s steps(42) infinite, blink 0.7s step-end infinite',
+          },
+          keyframes: {
+            fadeIn:     { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
+            fadeUp:     { '0%': { opacity: '0', transform: 'translateY(30px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
+            pulseGlow:  { '0%, 100%': { opacity: '0.4' }, '50%': { opacity: '1' } },
+            slideLeft:  { '0%': { opacity: '0', transform: 'translateX(40px)' }, '100%': { opacity: '1', transform: 'translateX(0)' } },
+            slideRight: { '0%': { opacity: '0', transform: 'translateX(-40px)' }, '100%': { opacity: '1', transform: 'translateX(0)' } },
+            typing:     { '0%': { width: '0' }, '50%': { width: '42ch' }, '90%, 100%': { width: '0' } },
+            blink:      { '50%': { borderColor: 'transparent' } },
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { background: #0a0e1a; color: #e6edf3; }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #0a0e1a; }
+    ::-webkit-scrollbar-thumb { background: #21262d; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #30363d; }
+
+    /* Intersection Observer reveal */
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* Grid glow effect */
+    .grid-bg {
+      background-image:
+        linear-gradient(rgba(0,255,136,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,255,136,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    /* Radial glow behind hero */
+    .hero-glow {
+      background: radial-gradient(ellipse 80% 60% at 50% 20%, rgba(0,255,136,0.06) 0%, transparent 70%);
+    }
+
+    /* Card hover glow */
+    .card-glow {
+      position: relative;
+      overflow: hidden;
+    }
+    .card-glow::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 1px;
+      background: linear-gradient(135deg, rgba(0,255,136,0.15), transparent 50%);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    .card-glow:hover::before { opacity: 1; }
+
+    /* Terminal window */
+    .terminal {
+      background: #0d1117;
+      border: 1px solid #21262d;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+    }
+    .terminal-bar {
+      background: #161b22;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .terminal-dot { width: 12px; height: 12px; border-radius: 50%; }
+
+    /* Pipeline arrow connector */
+    .pipeline-connector {
+      width: 2px;
+      background: linear-gradient(to bottom, #00ff88, rgba(0,255,136,0.1));
+    }
+
+    /* Comparison table highlight */
+    .comparison-highlight {
+      background: linear-gradient(135deg, rgba(0,255,136,0.05), transparent);
+    }
+
+    /* Typing cursor for hero terminal */
+    .typing-cursor::after {
+      content: '|';
+      animation: blink 0.7s step-end infinite;
+      color: #00ff88;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+  </style>
+</head>
+<body class="font-sans antialiased">
+
+<!-- ======================================================
+     NAVIGATION
+     ====================================================== -->
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" style="background: rgba(10,14,26,0.8); backdrop-filter: blur(12px); border-bottom: 1px solid transparent;" role="navigation" aria-label="Main navigation">
+  <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="#" class="flex items-center gap-3 group">
+      <div class="w-8 h-8 rounded-lg bg-neon/10 border border-neon/30 flex items-center justify-center group-hover:bg-neon/20 transition-colors">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00ff88" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2L2 7l10 5 10-5-10-5z" /><path d="M2 17l10 5 10-5" /><path d="M2 12l10 5 10-5" />
+        </svg>
+      </div>
+      <span class="font-mono font-bold text-lg tracking-tight text-white">ABYSS</span>
+    </a>
+    <div class="hidden md:flex items-center gap-8">
+      <a href="#features" class="text-sm text-gray-400 hover:text-neon transition-colors">Features</a>
+      <a href="#how-it-works" class="text-sm text-gray-400 hover:text-neon transition-colors">How it works</a>
+      <a href="#comparison" class="text-sm text-gray-400 hover:text-neon transition-colors">Comparison</a>
+      <a href="#integrations" class="text-sm text-gray-400 hover:text-neon transition-colors">Integrations</a>
+      <a href="#quickstart" class="text-sm text-gray-400 hover:text-neon transition-colors">Get started</a>
+      <a href="https://github.com/spashx/abyss" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        GitHub
+      </a>
+    </div>
+    <!-- Mobile menu toggle -->
+    <button id="mobile-menu-btn" class="md:hidden text-gray-400 hover:text-white">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+    </button>
+  </div>
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 space-y-3">
+    <a href="#features" class="block text-sm text-gray-400 hover:text-neon">Features</a>
+    <a href="#how-it-works" class="block text-sm text-gray-400 hover:text-neon">How it works</a>
+    <a href="#comparison" class="block text-sm text-gray-400 hover:text-neon">Comparison</a>
+    <a href="#integrations" class="block text-sm text-gray-400 hover:text-neon">Integrations</a>
+    <a href="#quickstart" class="block text-sm text-gray-400 hover:text-neon">Get started</a>
+  </div>
+</nav>
+
+
+<!-- ======================================================
+     HERO
+     ====================================================== -->
+<main>
+<section class="relative min-h-screen flex items-center justify-center grid-bg hero-glow pt-16" aria-labelledby="hero-heading">
+  <!-- Floating particles (decorative) -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+    <div class="absolute top-1/4 left-1/4 w-2 h-2 rounded-full bg-neon/30 animate-pulse-glow"></div>
+    <div class="absolute top-1/3 right-1/3 w-1.5 h-1.5 rounded-full bg-neon/20 animate-pulse-glow" style="animation-delay: 1s;"></div>
+    <div class="absolute bottom-1/3 left-1/3 w-1 h-1 rounded-full bg-neon/25 animate-pulse-glow" style="animation-delay: 2s;"></div>
+    <div class="absolute top-2/3 right-1/4 w-2 h-2 rounded-full bg-blue-400/20 animate-pulse-glow" style="animation-delay: 0.5s;"></div>
+  </div>
+
+  <div class="relative z-10 max-w-5xl mx-auto px-6 text-center">
+    <!-- ASCII logo -->
+    <pre class="font-mono text-neon/60 text-xs sm:text-sm leading-tight mb-8 animate-fade-in select-none" aria-hidden="true">
+    ___    ____  __  _______ _____
+   /   |  / __ \ \/ / ___// ___/
+  / /| | / __  | \  /\__ \ \__ \
+ / ___ |/ /_/ / / / ___/ /___/ /
+/_/  |_/_____/ /_/ /____//____/</pre>
+
+    <!-- Tagline -->
+    <h1 id="hero-heading" class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-tight animate-fade-up">
+      <span class="text-white">Your code, </span>
+      <span class="text-transparent bg-clip-text bg-gradient-to-r from-neon to-emerald-400">semantically searchable.</span>
+    </h1>
+
+    <p class="mt-6 text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto animate-fade-up" style="animation-delay: 0.2s;">
+      <strong class="text-white">Local-first RAG engine that indexes your codebase AND documentation, searchable through MCP</strong>.<br />No cloud. No GPU. No data leaves your machine.
+    </p>
+
+    <!-- Badges -->
+    <div class="mt-8 flex flex-wrap items-center justify-center gap-3 animate-fade-up" style="animation-delay: 0.4s;">
+      <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium bg-neon/10 text-neon border border-neon/20">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        100% Offline
+      </span>
+      <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium bg-blue-500/10 text-blue-400 border border-blue-500/20">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9z"/></svg>
+        No GPU Required
+      </span>
+      <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium bg-purple-500/10 text-purple-400 border border-purple-500/20">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        MCP Native
+      </span>
+      <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium bg-orange-500/10 text-orange-400 border border-orange-500/20">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        Multi-Language
+      </span>
+    </div>
+
+    <!-- CTA Buttons -->
+    <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-up" style="animation-delay: 0.6s;">
+      <a href="#quickstart" class="group inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-neon text-abyss-950 font-semibold text-sm hover:bg-neonDim transition-all shadow-lg shadow-neon/20 hover:shadow-neon/40">
+        Get Started
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="group-hover:translate-x-1 transition-transform"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="https://github.com/spashx/abyss" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-white/5 text-white font-semibold text-sm border border-white/10 hover:border-white/25 hover:bg-white/10 transition-all">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        View on GitHub
+      </a>
+    </div>
+
+    <!-- Hero Terminal Demo -->
+    <div class="mt-16 max-w-3xl mx-auto animate-fade-up" style="animation-delay: 0.8s;">
+      <div class="terminal">
+        <div class="terminal-bar">
+          <div class="terminal-dot" style="background: #ff5f57;"></div>
+          <div class="terminal-dot" style="background: #febc2e;"></div>
+          <div class="terminal-dot" style="background: #28c840;"></div>
+          <span class="ml-3 text-xs text-gray-500 font-mono">abyss -- semantic search</span>
+        </div>
+        <div class="p-6 font-mono text-sm leading-relaxed text-left">
+          <div class="text-gray-500">$ <span class="text-neon">abyss</span> query "how is payment processed?"</div>
+          <div class="mt-4 space-y-3">
+            <div class="flex items-start gap-3">
+              <span class="text-neon font-bold shrink-0">1.</span>
+              <div>
+                <div class="text-blue-400">src/Orders/OrderService.cs<span class="text-gray-600">:5-18</span></div>
+                <div class="text-gray-400 text-xs mt-0.5">ProcessPayment() -- validates order and charges amount</div>
+                <div class="text-yellow-500/70 text-xs">Score: 0.94 | kind: method | callers: OrderController#Post()</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-neon font-bold shrink-0">2.</span>
+              <div>
+                <div class="text-blue-400">src/Payment/PaymentProcessor.py<span class="text-gray-600">:12-28</span></div>
+                <div class="text-gray-400 text-xs mt-0.5">charge() -- executes payment via gateway adapter</div>
+                <div class="text-yellow-500/70 text-xs">Score: 0.87 | kind: function | callees: GatewayAdapter#submit()</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-neon font-bold shrink-0">3.</span>
+              <div>
+                <div class="text-blue-400">docs/architecture.md<span class="text-gray-600"> -- "Payment Flow"</span></div>
+                <div class="text-gray-400 text-xs mt-0.5">Section describing the end-to-end payment pipeline</div>
+                <div class="text-yellow-500/70 text-xs">Score: 0.82 | chunk_type: document | word_count: 245</div>
+              </div>
+            </div>
+          </div>
+          <div class="mt-4 text-gray-600 text-xs">3 results in 42ms -- all data stays local</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ======================================================
+     FEATURES GRID
+     ====================================================== -->
+<section id="features" class="py-28 relative" aria-labelledby="features-heading">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16 reveal">
+      <span class="inline-block px-3 py-1 rounded-full text-xs font-medium bg-neon/10 text-neon border border-neon/20 mb-4">Features</span>
+      <h2 id="features-heading" class="text-3xl sm:text-4xl md:text-5xl font-bold text-white">Everything your AI workflow needs</h2>
+      <p class="mt-4 text-gray-400 max-w-2xl mx-auto">From code parsing to semantic search, Abyss handles the full pipeline locally.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Feature 1 -->
+      <div class="reveal card-glow rounded-2xl bg-surfaceAlt border border-border p-7 hover:border-neon/30 transition-colors">
+        <div class="w-12 h-12 rounded-xl bg-neon/10 flex items-center justify-center mb-5">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00ff88" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        </div>
+        <h3 class="text-lg font-semibold text-white mb-2">Semantic Search</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">Search by meaning, not keywords. Ask "how is authentication handled?" and find the exact functions -- even if the word "auth" never appears.</p>
+      </div>
+
+      <!-- Feature 2 -->
+      <div class="reveal card-glow rounded-2xl bg-surfaceAlt border border-border p-7 hover:border-blue-500/30 transition-colors" style="transition-delay: 0.1s;">
+        <div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center mb-5">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#5ab8ff" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        </div>
+        <h3 class="text-lg font-semibold text-white mb-2">AST-Aware Code Parsing</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">Tree-sitter splits code at syntactic boundaries -- methods, classes, functions -- not arbitrary line counts. Supports C#, Python, Java, TypeScript, and more.</p>
+      </div>
+
+      <!-- Feature 3 -->
+      <div class="reveal card-glow rounded-2xl bg-surfaceAlt border border-border p-7 hover:border-purple-500/30 transition-colors" style="transition-delay: 0.2s;">
+        <div class="w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center mb-5">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <h3 class="text-lg font-semibold text-white mb-2">MCP Native</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">8 tools + 3 resources accessible from VS Code, Claude Desktop, and any MCP-compatible client. Zero configuration friction.</p>
+      </div>
+
+      <!-- Feature 4 -->
+      <div class="reveal card-glow rounded-2xl bg-surfaceAlt border border-border p-7 hover:border-orange-500/30 transition-colors" style="transition-delay: 0.1s;">
+        <div class="w-12 h-12 rounded-xl bg-orange-500/10 flex items-center justify-center mb-5">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>
+        </div>
+        <h3 class="text-lg font-semibold text-white mb-2">Universal Document Ingestion</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">PDF, DOCX, PPTX, images (OCR), Markdown, Jupyter notebooks, CSV, JSON, XML -- all converted and indexed in one unified vector database.</p>
+      </div>
+
+      <!-- Feature 5 -->
+      <div class="reveal card-glow rounded-2xl bg-surfaceAlt border border-border p-7 hover:border-red-500/30 transition-colors" style="transition-delay: 0.2s;">
+        <div class="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center mb-5">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f87171" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+        </div>
+        <h3 class="text-lg font-semibold text-white mb-2">SCIP Call Graph Enrichment</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">Optional SCIP indexing adds caller/callee relationships, symbol kinds, and documentation to every code chunk. Ask "who calls ProcessPayment()?" and get real answers.</p>
+      </div>
+
+      <!-- Feature 6 -->
+      <div class="reveal card-glow rounded-2xl bg-surfaceAlt border border-border p-7 hover:border-emerald-500/30 transition-colors" style="transition-delay: 0.3s;">
+        <div class="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center mb-5">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3 class="text-lg font-semibold text-white mb-2">Privacy by Design</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">Everything runs on your machine. The embedding model downloads once (~90MB) and is cached locally. No cloud APIs, no telemetry, no data exfiltration.</p>
+      </div>
+
+      <!-- Feature 7 -->
+      <div class="reveal card-glow rounded-2xl bg-surfaceAlt border border-border p-7 hover:border-cyan-500/30 transition-colors" style="transition-delay: 0.2s;">
+        <div class="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center mb-5">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <h3 class="text-lg font-semibold text-white mb-2">Advanced Query Filters</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">Filter by language, symbol kind, file path, line range, chunk type, or full-text substring. Precision search across your entire codebase.</p>
+      </div>
+
+      <!-- Feature 8 -->
+      <div class="reveal card-glow rounded-2xl bg-surfaceAlt border border-border p-7 hover:border-yellow-500/30 transition-colors" style="transition-delay: 0.3s;">
+        <div class="w-12 h-12 rounded-xl bg-yellow-500/10 flex items-center justify-center mb-5">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        </div>
+        <h3 class="text-lg font-semibold text-white mb-2">Persistent ChromaDB Storage</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">Indexed data survives restarts in a local SQLite-backed ChromaDB database. No external server needed. Index once, query forever.</p>
+      </div>
+
+      <!-- Feature 9 -->
+      <div class="reveal card-glow rounded-2xl bg-surfaceAlt border border-border p-7 hover:border-pink-500/30 transition-colors" style="transition-delay: 0.4s;">
+        <div class="w-12 h-12 rounded-xl bg-pink-500/10 flex items-center justify-center mb-5">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f472b6" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/><path d="M12 18v-6"/><path d="M9 15l3 3 3-3"/></svg>
+        </div>
+        <h3 class="text-lg font-semibold text-white mb-2">Debug HTML Reports</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">Per-file HTML debug reports showing every chunk, its metadata, and the exact text sent to the embedding model. Diagnose chunking quality visually.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ======================================================
+     HOW IT WORKS - PIPELINE
+     ====================================================== -->
+<section id="how-it-works" class="py-28 relative overflow-hidden" aria-labelledby="pipeline-heading">
+  <div class="absolute inset-0 bg-gradient-to-b from-transparent via-neon/[0.02] to-transparent pointer-events-none"></div>
+  <div class="max-w-6xl mx-auto px-6 relative z-10">
+    <div class="text-center mb-20 reveal">
+      <span class="inline-block px-3 py-1 rounded-full text-xs font-medium bg-neon/10 text-neon border border-neon/20 mb-4">Architecture</span>
+      <h2 id="pipeline-heading" class="text-3xl sm:text-4xl md:text-5xl font-bold text-white">Five-stage ingestion pipeline</h2>
+      <p class="mt-4 text-gray-400 max-w-2xl mx-auto">Files flow through discovery, parsing, enrichment, embedding, and storage -- fully automated.</p>
+    </div>
+
+    <!-- Pipeline Steps -->
+    <div class="space-y-0">
+      <!-- Step 1 -->
+      <div class="reveal flex items-start gap-6 md:gap-10">
+        <div class="flex flex-col items-center shrink-0">
+          <div class="w-14 h-14 rounded-2xl bg-neon/10 border border-neon/30 flex items-center justify-center text-neon font-mono font-bold text-lg">1</div>
+          <div class="pipeline-connector flex-1 min-h-[60px] mt-2"></div>
+        </div>
+        <div class="pb-12">
+          <h3 class="text-xl font-semibold text-white mb-2">File Discovery</h3>
+          <p class="text-gray-400 text-sm leading-relaxed max-w-lg">Recursive glob traversal with size limits (10MB max), directory exclusions, extension filtering, and automatic file type classification (code, document, structured, unknown).</p>
+          <div class="mt-3 flex flex-wrap gap-2">
+            <span class="px-2 py-0.5 rounded text-xs font-mono bg-white/5 text-gray-400">.cs</span>
+            <span class="px-2 py-0.5 rounded text-xs font-mono bg-white/5 text-gray-400">.py</span>
+            <span class="px-2 py-0.5 rounded text-xs font-mono bg-white/5 text-gray-400">.ts</span>
+            <span class="px-2 py-0.5 rounded text-xs font-mono bg-white/5 text-gray-400">.md</span>
+            <span class="px-2 py-0.5 rounded text-xs font-mono bg-white/5 text-gray-400">.pdf</span>
+            <span class="px-2 py-0.5 rounded text-xs font-mono bg-white/5 text-gray-400">.docx</span>
+            <span class="px-2 py-0.5 rounded text-xs font-mono bg-white/5 text-gray-400">.json</span>
+            <span class="px-2 py-0.5 rounded text-xs font-mono bg-white/5 text-gray-400">.xml</span>
+            <span class="px-2 py-0.5 rounded text-xs font-mono bg-gray-700/50 text-gray-500">+20 more</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="reveal flex items-start gap-6 md:gap-10">
+        <div class="flex flex-col items-center shrink-0">
+          <div class="w-14 h-14 rounded-2xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 font-mono font-bold text-lg">2</div>
+          <div class="pipeline-connector flex-1 min-h-[60px] mt-2" style="background: linear-gradient(to bottom, #5ab8ff, rgba(90,184,255,0.1));"></div>
+        </div>
+        <div class="pb-12">
+          <h3 class="text-xl font-semibold text-white mb-2">Smart Parsing</h3>
+          <p class="text-gray-400 text-sm leading-relaxed max-w-lg">Four specialized parsers dispatch by file type. <strong class="text-white">CodeParser</strong> uses Tree-sitter AST grammars. <strong class="text-white">DocParser</strong> leverages MarkItDown + header-based sectioning. <strong class="text-white">JsonParser</strong> and <strong class="text-white">XmlParser</strong> handle structured data hierarchically.</p>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="reveal flex items-start gap-6 md:gap-10">
+        <div class="flex flex-col items-center shrink-0">
+          <div class="w-14 h-14 rounded-2xl bg-orange-500/10 border border-orange-500/30 flex items-center justify-center text-orange-400 font-mono font-bold text-lg">3</div>
+          <div class="pipeline-connector flex-1 min-h-[60px] mt-2" style="background: linear-gradient(to bottom, #f97316, rgba(249,115,22,0.1));"></div>
+        </div>
+        <div class="pb-12">
+          <h3 class="text-xl font-semibold text-white mb-2">SCIP Enrichment <span class="text-xs text-gray-500 font-normal ml-2">(optional)</span></h3>
+          <p class="text-gray-400 text-sm leading-relaxed max-w-lg">Matches each code chunk to a SCIP index by file + line range. Injects <code class="text-orange-300 text-xs">symbol</code>, <code class="text-orange-300 text-xs">kind</code>, <code class="text-orange-300 text-xs">callers[]</code>, <code class="text-orange-300 text-xs">callees[]</code>, and <code class="text-orange-300 text-xs">documentation</code> -- enabling call-graph-aware search.</p>
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="reveal flex items-start gap-6 md:gap-10">
+        <div class="flex flex-col items-center shrink-0">
+          <div class="w-14 h-14 rounded-2xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 font-mono font-bold text-lg">4</div>
+          <div class="pipeline-connector flex-1 min-h-[60px] mt-2" style="background: linear-gradient(to bottom, #a78bfa, rgba(167,139,250,0.1));"></div>
+        </div>
+        <div class="pb-12">
+          <h3 class="text-xl font-semibold text-white mb-2">Semantic Header Injection</h3>
+          <p class="text-gray-400 text-sm leading-relaxed max-w-lg">EmbedBuilder prepends a structured header to each chunk's text -- file path, language, symbol name, kind, callers, and callees. This dramatically improves embedding quality and search relevance.</p>
+          <div class="terminal mt-4 max-w-md">
+            <div class="terminal-bar">
+              <div class="terminal-dot" style="background: #ff5f57;"></div>
+              <div class="terminal-dot" style="background: #febc2e;"></div>
+              <div class="terminal-dot" style="background: #28c840;"></div>
+              <span class="ml-3 text-xs text-gray-500 font-mono">enriched chunk</span>
+            </div>
+            <div class="p-4 font-mono text-xs leading-relaxed">
+              <div class="text-gray-500">// File     : src/Orders/OrderService.cs</div>
+              <div class="text-gray-500">// Language : csharp</div>
+              <div class="text-gray-500">// Symbol   : ValidateOrder</div>
+              <div class="text-gray-500">// Kind     : method</div>
+              <div class="text-gray-500">// Calls    : PriceCalculator#Compute()</div>
+              <div class="text-gray-500">// Called by: OrderController#Post()</div>
+              <div class="text-blue-400 mt-2">public void ValidateOrder(Order order)</div>
+              <div class="text-gray-300">{</div>
+              <div class="text-gray-300">    if (order.Items.Count == 0)</div>
+              <div class="text-gray-300">        throw new InvalidOperationException();</div>
+              <div class="text-gray-300">}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 5 -->
+      <div class="reveal flex items-start gap-6 md:gap-10">
+        <div class="flex flex-col items-center shrink-0">
+          <div class="w-14 h-14 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 font-mono font-bold text-lg">5</div>
+        </div>
+        <div>
+          <h3 class="text-xl font-semibold text-white mb-2">Embedding & Storage</h3>
+          <p class="text-gray-400 text-sm leading-relaxed max-w-lg">Batch-encodes enriched text with <code class="text-emerald-300 text-xs">all-MiniLM-L6-v2</code>, then upserts into ChromaDB with cosine similarity. Files are tracked in a document registry with hash, size, and timestamp for incremental re-indexing.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ======================================================
+     COMPARISON SECTION
+     ====================================================== -->
+<section id="comparison" class="py-28 relative" aria-labelledby="comparison-heading">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="text-center mb-16 reveal">
+      <span class="inline-block px-3 py-1 rounded-full text-xs font-medium bg-neon/10 text-neon border border-neon/20 mb-4">Why Abyss</span>
+      <h2 id="comparison-heading" class="text-3xl sm:text-4xl md:text-5xl font-bold text-white">Semantically link your docs and codebase</h2>
+      <p class="mt-4 text-gray-400 max-w-2xl mx-auto">Text search finds strings. Abyss finds meaning.</p>
+    </div>
+
+    <div class="reveal grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- grep side -->
+      <div class="rounded-2xl bg-surfaceAlt border border-border p-6">
+        <div class="flex items-center gap-3 mb-5">
+          <div class="w-10 h-10 rounded-xl bg-red-500/10 flex items-center justify-center">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f87171" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M15 9l-6 6"/><path d="M9 9l6 6"/></svg>
+          </div>
+          <span class="font-mono font-bold text-white">grep / text search</span>
+        </div>
+        <div class="terminal">
+          <div class="terminal-bar">
+            <div class="terminal-dot" style="background: #ff5f57;"></div>
+            <div class="terminal-dot" style="background: #febc2e;"></div>
+            <div class="terminal-dot" style="background: #28c840;"></div>
+          </div>
+          <div class="p-4 font-mono text-xs leading-relaxed">
+            <div class="text-gray-500">$ grep -r "auth" src/</div>
+            <div class="mt-2 space-y-1">
+              <div class="text-gray-400">utils/string.ts:42: <span class="text-red-300">// auth</span>orize string</div>
+              <div class="text-gray-400">Header.tsx:8: <span class="text-red-300">auth</span>or="John"</div>
+              <div class="text-gray-400">oauth.ts:15: <span class="text-red-300">auth</span>Token = null</div>
+              <div class="text-gray-400">config.ts:3: // <span class="text-red-300">auth</span>entication cfg</div>
+              <div class="text-gray-400">user.ts:89: re<span class="text-red-300">auth</span>orize()</div>
+              <div class="text-gray-500">... 841 more results</div>
+            </div>
+            <div class="mt-3 text-red-400 text-xs">847 results. Where is the actual auth logic?</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Abyss side -->
+      <div class="rounded-2xl bg-surfaceAlt border border-neon/20 p-6 comparison-highlight">
+        <div class="flex items-center gap-3 mb-5">
+          <div class="w-10 h-10 rounded-xl bg-neon/10 flex items-center justify-center">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00ff88" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+          </div>
+          <span class="font-mono font-bold text-white">abyss / semantic search</span>
+        </div>
+        <div class="terminal">
+          <div class="terminal-bar">
+            <div class="terminal-dot" style="background: #ff5f57;"></div>
+            <div class="terminal-dot" style="background: #febc2e;"></div>
+            <div class="terminal-dot" style="background: #28c840;"></div>
+          </div>
+          <div class="p-4 font-mono text-xs leading-relaxed">
+            <div class="text-gray-500">$ <span class="text-neon">abyss</span> query "user authentication flow"</div>
+            <div class="mt-2 space-y-2">
+              <div>
+                <div class="text-neon">src/auth/login.ts:23-45</div>
+                <div class="text-gray-400">handleUserLogin() -- validates credentials</div>
+                <div class="text-yellow-500/70">Score: 0.94</div>
+              </div>
+              <div>
+                <div class="text-neon">src/middleware/session.ts:12-28</div>
+                <div class="text-gray-400">verifySession() -- checks JWT token</div>
+                <div class="text-yellow-500/70">Score: 0.87</div>
+              </div>
+            </div>
+            <div class="mt-3 text-neon text-xs">2 results. Exactly what you need.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ======================================================
+     TECHNOLOGY STACK
+     ====================================================== -->
+<section class="py-28 relative overflow-hidden">
+  <div class="absolute inset-0 bg-gradient-to-b from-transparent via-blue-500/[0.02] to-transparent pointer-events-none"></div>
+  <div class="max-w-6xl mx-auto px-6 relative z-10">
+    <div class="text-center mb-16 reveal">
+      <span class="inline-block px-3 py-1 rounded-full text-xs font-medium bg-blue-500/10 text-blue-400 border border-blue-500/20 mb-4">Built With</span>
+      <h2 id="stack-heading" class="text-3xl sm:text-4xl md:text-5xl font-bold text-white">Battle-tested technology stack</h2>
+    </div>
+
+    <div class="reveal grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+      <div class="rounded-xl bg-surfaceAlt border border-border p-5 text-center hover:border-neon/20 transition-colors">
+        <div class="text-2xl mb-2">&#9881;</div>
+        <div class="font-semibold text-white text-sm">MCP</div>
+        <div class="text-gray-500 text-xs mt-1">Protocol layer</div>
+      </div>
+      <div class="rounded-xl bg-surfaceAlt border border-border p-5 text-center hover:border-blue-500/20 transition-colors">
+        <div class="text-2xl mb-2">&#128230;</div>
+        <div class="font-semibold text-white text-sm">LlamaIndex</div>
+        <div class="text-gray-500 text-xs mt-1">Orchestration</div>
+      </div>
+      <div class="rounded-xl bg-surfaceAlt border border-border p-5 text-center hover:border-green-500/20 transition-colors">
+        <div class="text-2xl mb-2">&#127795;</div>
+        <div class="font-semibold text-white text-sm">Tree-sitter</div>
+        <div class="text-gray-500 text-xs mt-1">AST parsing</div>
+      </div>
+      <div class="rounded-xl bg-surfaceAlt border border-border p-5 text-center hover:border-orange-500/20 transition-colors">
+        <div class="text-2xl mb-2">&#128196;</div>
+        <div class="font-semibold text-white text-sm">MarkItDown</div>
+        <div class="text-gray-500 text-xs mt-1">Doc conversion</div>
+      </div>
+      <div class="rounded-xl bg-surfaceAlt border border-border p-5 text-center hover:border-yellow-500/20 transition-colors">
+        <div class="text-2xl mb-2">&#129302;</div>
+        <div class="font-semibold text-white text-sm">MiniLM-L6-v2</div>
+        <div class="text-gray-500 text-xs mt-1">Embeddings</div>
+      </div>
+      <div class="rounded-xl bg-surfaceAlt border border-border p-5 text-center hover:border-purple-500/20 transition-colors">
+        <div class="text-2xl mb-2">&#128451;</div>
+        <div class="font-semibold text-white text-sm">ChromaDB</div>
+        <div class="text-gray-500 text-xs mt-1">Vector storage</div>
+      </div>
+      <div class="rounded-xl bg-surfaceAlt border border-border p-5 text-center hover:border-red-500/20 transition-colors">
+        <div class="text-2xl mb-2">&#128279;</div>
+        <div class="font-semibold text-white text-sm">SCIP</div>
+        <div class="text-gray-500 text-xs mt-1">Call graph index</div>
+      </div>
+      <div class="rounded-xl bg-surfaceAlt border border-border p-5 text-center hover:border-cyan-500/20 transition-colors">
+        <div class="text-2xl mb-2">&#128013;</div>
+        <div class="font-semibold text-white text-sm">Python 3.13</div>
+        <div class="text-gray-500 text-xs mt-1">Runtime</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ======================================================
+     SUPPORTED LANGUAGES
+     ====================================================== -->
+<section class="py-28 relative">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="text-center mb-16 reveal">
+      <span class="inline-block px-3 py-1 rounded-full text-xs font-medium bg-orange-500/10 text-orange-400 border border-orange-500/20 mb-4">Languages & Formats</span>
+      <h2 id="languages-heading" class="text-3xl sm:text-4xl md:text-5xl font-bold text-white">Index everything</h2>
+      <p class="mt-4 text-gray-400 max-w-2xl mx-auto">Source code with AST-aware parsing, documents with intelligent sectioning, structured data with hierarchical decomposition.</p>
+    </div>
+
+    <div class="reveal grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- Code -->
+      <div class="rounded-2xl bg-surfaceAlt border border-border p-7">
+        <div class="flex items-center gap-3 mb-5">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5ab8ff" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          <h3 class="font-semibold text-white">Source Code</h3>
+          <span class="ml-auto text-xs text-gray-500">Tree-sitter</span>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-2.5 py-1 rounded-lg text-xs font-mono bg-blue-500/10 text-blue-400 border border-blue-500/20">C#</span>
+          <span class="px-2.5 py-1 rounded-lg text-xs font-mono bg-yellow-500/10 text-yellow-400 border border-yellow-500/20">Python</span>
+          <span class="px-2.5 py-1 rounded-lg text-xs font-mono bg-red-500/10 text-red-400 border border-red-500/20">Java</span>
+          <span class="px-2.5 py-1 rounded-lg text-xs font-mono bg-blue-400/10 text-blue-300 border border-blue-400/20">TypeScript</span>
+          <span class="px-2.5 py-1 rounded-lg text-xs font-mono bg-amber-500/10 text-amber-400 border border-amber-500/20">JavaScript</span>
+          <span class="px-2.5 py-1 rounded-lg text-xs font-mono bg-orange-500/10 text-orange-400 border border-orange-500/20">HTML</span>
+          <span class="px-2.5 py-1 rounded-lg text-xs font-mono bg-gray-500/10 text-gray-400 border border-gray-500/20">TSX / JSX</span>
+        </div>
+      </div>
+
+      <!-- Documents -->
+      <div class="rounded-2xl bg-surfaceAlt border border-border p-7">
+        <div class="flex items-center gap-3 mb-5">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg>
+          <h3 class="font-semibold text-white">Documents</h3>
+          <span class="ml-auto text-xs text-gray-500">MarkItDown</span>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-2.5 py-1 rounded-lg text-xs font-mono bg-gray-500/10 text-gray-300 border border-gray-500/20">Markdown</span>
+          <span class="px-2.5 py-1 rounded-lg text-xs font-mono bg-red-500/10 text-red-300 border border-red-500/20">PDF</span>
+          <span class="px-2.5 py-1 rounded-lg text-xs font-mono bg-blue-500/10 text-blue-300 border border-blue-500/20">DOCX</span>
+          <span class="px-2.5 py-1 rounded-lg text-xs font-mono bg-orange-500/10 text-orange-300 border border-orange-500/20">PPTX</span>
+          <span class="px-2.5 py-1 rounded-lg text-xs font-mono bg-green-500/10 text-green-300 border border-green-500/20">XLSX</span>
+          <span class="px-2.5 py-1 rounded-lg text-xs font-mono bg-purple-500/10 text-purple-300 border border-purple-500/20">EPUB</span>
+          <span class="px-2.5 py-1 rounded-lg text-xs font-mono bg-teal-500/10 text-teal-300 border border-teal-500/20">Images (OCR)</span>
+          <span class="px-2.5 py-1 rounded-lg text-xs font-mono bg-cyan-500/10 text-cyan-300 border border-cyan-500/20">CSV</span>
+          <span class="px-2.5 py-1 rounded-lg text-xs font-mono bg-pink-500/10 text-pink-300 border border-pink-500/20">Jupyter</span>
+        </div>
+      </div>
+
+      <!-- Structured -->
+      <div class="rounded-2xl bg-surfaceAlt border border-border p-7">
+        <div class="flex items-center gap-3 mb-5">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+          <h3 class="font-semibold text-white">Structured</h3>
+          <span class="ml-auto text-xs text-gray-500">Dedicated</span>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-2.5 py-1 rounded-lg text-xs font-mono bg-yellow-500/10 text-yellow-300 border border-yellow-500/20">JSON</span>
+          <span class="px-2.5 py-1 rounded-lg text-xs font-mono bg-purple-500/10 text-purple-300 border border-purple-500/20">XML</span>
+          <span class="px-2.5 py-1 rounded-lg text-xs font-mono bg-blue-500/10 text-blue-300 border border-blue-500/20">.csproj</span>
+          <span class="px-2.5 py-1 rounded-lg text-xs font-mono bg-gray-500/10 text-gray-300 border border-gray-500/20">.props</span>
+          <span class="px-2.5 py-1 rounded-lg text-xs font-mono bg-gray-500/10 text-gray-300 border border-gray-500/20">.config</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ======================================================
+     INTEGRATIONS
+     ====================================================== -->
+<section id="integrations" class="py-28 relative overflow-hidden" aria-labelledby="integrations-heading">
+  <div class="absolute inset-0 bg-gradient-to-b from-transparent via-purple-500/[0.02] to-transparent pointer-events-none"></div>
+  <div class="max-w-5xl mx-auto px-6 relative z-10">
+    <div class="text-center mb-16 reveal">
+      <span class="inline-block px-3 py-1 rounded-full text-xs font-medium bg-purple-500/10 text-purple-400 border border-purple-500/20 mb-4">Integrations</span>
+      <h2 id="integrations-heading" class="text-3xl sm:text-4xl md:text-5xl font-bold text-white">Plug into your AI workflow</h2>
+      <p class="mt-4 text-gray-400 max-w-2xl mx-auto">MCP server with 8 tools and 3 resources. Works with any MCP-compatible client.</p>
+    </div>
+
+    <div class="reveal grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- VS Code -->
+      <div class="card-glow rounded-2xl bg-surfaceAlt border border-border p-7 text-center hover:border-blue-500/30 transition-colors">
+        <div class="w-16 h-16 mx-auto rounded-2xl bg-blue-500/10 flex items-center justify-center mb-4">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#5ab8ff" stroke-width="1.5"><path d="M16 3l5 2.5v13L16 21l-11-4.5V7.5L16 3z"/><path d="M5 7.5L16 16"/><path d="M16 3v13"/><path d="M5 7.5l6 4.5-6 4.5"/></svg>
+        </div>
+        <h3 class="font-semibold text-white mb-1">VS Code</h3>
+        <p class="text-gray-400 text-xs">GitHub Copilot + MCP integration</p>
+      </div>
+
+      <!-- Claude Desktop -->
+      <div class="card-glow rounded-2xl bg-surfaceAlt border border-border p-7 text-center hover:border-orange-500/30 transition-colors">
+        <div class="w-16 h-16 mx-auto rounded-2xl bg-orange-500/10 flex items-center justify-center mb-4">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><circle cx="9" cy="10" r="1" fill="#f97316"/><circle cx="15" cy="10" r="1" fill="#f97316"/></svg>
+        </div>
+        <h3 class="font-semibold text-white mb-1">Claude Desktop</h3>
+        <p class="text-gray-400 text-xs">Native MCP client support</p>
+      </div>
+
+      <!-- Any MCP Client -->
+      <div class="card-glow rounded-2xl bg-surfaceAlt border border-border p-7 text-center hover:border-neon/30 transition-colors">
+        <div class="w-16 h-16 mx-auto rounded-2xl bg-neon/10 flex items-center justify-center mb-4">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#00ff88" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <h3 class="font-semibold text-white mb-1">Any MCP Client</h3>
+        <p class="text-gray-400 text-xs">Standard protocol, zero lock-in</p>
+      </div>
+    </div>
+
+    <!-- MCP Tools breakdown -->
+    <div class="reveal mt-12 rounded-2xl bg-surfaceAlt border border-border overflow-hidden">
+      <div class="px-7 py-5 border-b border-border">
+        <h3 class="font-semibold text-white">Available MCP Tools</h3>
+      </div>
+      <div class="divide-y divide-border">
+        <div class="px-7 py-4 flex items-start gap-4 hover:bg-white/[0.02] transition-colors">
+          <code class="text-neon text-xs font-mono shrink-0 mt-0.5">index_directory</code>
+          <span class="text-gray-400 text-sm">Recursively index a directory with include/exclude filters</span>
+        </div>
+        <div class="px-7 py-4 flex items-start gap-4 hover:bg-white/[0.02] transition-colors">
+          <code class="text-neon text-xs font-mono shrink-0 mt-0.5">query</code>
+          <span class="text-gray-400 text-sm">Semantic search with filters: language, kind, file path, line range, text</span>
+        </div>
+        <div class="px-7 py-4 flex items-start gap-4 hover:bg-white/[0.02] transition-colors">
+          <code class="text-neon text-xs font-mono shrink-0 mt-0.5">list_documents</code>
+          <span class="text-gray-400 text-sm">List all indexed files with metadata: name, date, size, chunk count</span>
+        </div>
+        <div class="px-7 py-4 flex items-start gap-4 hover:bg-white/[0.02] transition-colors">
+          <code class="text-neon text-xs font-mono shrink-0 mt-0.5">list_sources</code>
+          <span class="text-gray-400 text-sm">Unique metadata values: file paths, languages, kinds, chunk types</span>
+        </div>
+        <div class="px-7 py-4 flex items-start gap-4 hover:bg-white/[0.02] transition-colors">
+          <code class="text-neon text-xs font-mono shrink-0 mt-0.5">replace_document</code>
+          <span class="text-gray-400 text-sm">Re-index a single file after modification</span>
+        </div>
+        <div class="px-7 py-4 flex items-start gap-4 hover:bg-white/[0.02] transition-colors">
+          <code class="text-neon text-xs font-mono shrink-0 mt-0.5">remove_document</code>
+          <span class="text-gray-400 text-sm">Remove a file and all its chunks from the database</span>
+        </div>
+        <div class="px-7 py-4 flex items-start gap-4 hover:bg-white/[0.02] transition-colors">
+          <code class="text-neon text-xs font-mono shrink-0 mt-0.5">list_filterable_fields</code>
+          <span class="text-gray-400 text-sm">Describe all filterable metadata fields with types and operators</span>
+        </div>
+        <div class="px-7 py-4 flex items-start gap-4 hover:bg-white/[0.02] transition-colors">
+          <code class="text-neon text-xs font-mono shrink-0 mt-0.5">clear_database</code>
+          <span class="text-gray-400 text-sm">Erase all chunks and document registry (requires confirmation)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ======================================================
+     QUICKSTART
+     ====================================================== -->
+<section id="quickstart" class="py-28 relative" aria-labelledby="quickstart-heading">
+  <div class="max-w-4xl mx-auto px-6">
+    <div class="text-center mb-16 reveal">
+      <span class="inline-block px-3 py-1 rounded-full text-xs font-medium bg-neon/10 text-neon border border-neon/20 mb-4">Quick Start</span>
+      <h2 id="quickstart-heading" class="text-3xl sm:text-4xl md:text-5xl font-bold text-white">Up and running in minutes</h2>
+      <p class="mt-4 text-gray-400 max-w-2xl mx-auto">From clone to semantic search in four steps.</p>
+    </div>
+
+    <div class="space-y-6">
+      <!-- Step 1 -->
+      <div class="reveal flex items-start gap-5">
+        <div class="w-10 h-10 rounded-xl bg-neon/10 border border-neon/30 flex items-center justify-center text-neon font-mono font-bold shrink-0">1</div>
+        <div class="flex-1">
+          <h3 class="text-lg font-semibold text-white mb-3">Clone & install</h3>
+          <div class="terminal">
+            <div class="terminal-bar">
+              <div class="terminal-dot" style="background: #ff5f57;"></div>
+              <div class="terminal-dot" style="background: #febc2e;"></div>
+              <div class="terminal-dot" style="background: #28c840;"></div>
+              <span class="ml-3 text-xs text-gray-500 font-mono">powershell</span>
+            </div>
+            <div class="p-4 font-mono text-xs leading-relaxed">
+              <div><span class="text-gray-500">$</span> <span class="text-neon">git clone</span> https://github.com/spashx/abyss.git</div>
+              <div><span class="text-gray-500">$</span> <span class="text-neon">cd</span> abyss</div>
+              <div><span class="text-gray-500">$</span> <span class="text-neon">.\install-deps-for-dev.ps1</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="reveal flex items-start gap-5">
+        <div class="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 font-mono font-bold shrink-0">2</div>
+        <div class="flex-1">
+          <h3 class="text-lg font-semibold text-white mb-3">Configure MCP in VS Code</h3>
+          <div class="terminal">
+            <div class="terminal-bar">
+              <div class="terminal-dot" style="background: #ff5f57;"></div>
+              <div class="terminal-dot" style="background: #febc2e;"></div>
+              <div class="terminal-dot" style="background: #28c840;"></div>
+              <span class="ml-3 text-xs text-gray-500 font-mono">.vscode/mcp.json</span>
+            </div>
+            <div class="p-4 font-mono text-xs leading-relaxed">
+              <div class="text-gray-500">{</div>
+              <div class="text-gray-500">  "servers": {</div>
+              <div class="text-gray-500">    "abyss": {</div>
+              <div>      "command": "<span class="text-blue-400">&lt;path&gt;</span><span class="text-gray-300">\\.venv\\Scripts\\python.exe</span>",</div>
+              <div>      "args": ["<span class="text-neon">-m</span>", "<span class="text-neon">abyss</span>"],</div>
+              <div>      "env": { "PYTHONPATH": "<span class="text-blue-400">&lt;path&gt;</span><span class="text-gray-300">\\src</span>" }</div>
+              <div class="text-gray-500">    }</div>
+              <div class="text-gray-500">  }</div>
+              <div class="text-gray-500">}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="reveal flex items-start gap-5">
+        <div class="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 font-mono font-bold shrink-0">3</div>
+        <div class="flex-1">
+          <h3 class="text-lg font-semibold text-white mb-3">Index your codebase</h3>
+          <p class="text-gray-400 text-sm mb-3">Use the <code class="text-neon text-xs">index_directory</code> MCP tool from your AI assistant:</p>
+          <div class="terminal">
+            <div class="terminal-bar">
+              <div class="terminal-dot" style="background: #ff5f57;"></div>
+              <div class="terminal-dot" style="background: #febc2e;"></div>
+              <div class="terminal-dot" style="background: #28c840;"></div>
+              <span class="ml-3 text-xs text-gray-500 font-mono">MCP tool call</span>
+            </div>
+            <div class="p-4 font-mono text-xs leading-relaxed">
+              <div class="text-gray-500">index_directory({</div>
+              <div>  "path": "<span class="text-neon">D:/repos/MyProject</span>",</div>
+              <div>  "include_extensions": ["<span class="text-blue-400">.cs</span>", "<span class="text-blue-400">.md</span>"]</div>
+              <div class="text-gray-500">})</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="reveal flex items-start gap-5">
+        <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 font-mono font-bold shrink-0">4</div>
+        <div class="flex-1">
+          <h3 class="text-lg font-semibold text-white mb-3">Search with natural language</h3>
+          <div class="terminal">
+            <div class="terminal-bar">
+              <div class="terminal-dot" style="background: #ff5f57;"></div>
+              <div class="terminal-dot" style="background: #febc2e;"></div>
+              <div class="terminal-dot" style="background: #28c840;"></div>
+              <span class="ml-3 text-xs text-gray-500 font-mono">MCP query</span>
+            </div>
+            <div class="p-4 font-mono text-xs leading-relaxed">
+              <div class="text-gray-500">query({</div>
+              <div>  "question": "<span class="text-neon">how is payment processed?</span>",</div>
+              <div>  "top_k": <span class="text-purple-400">8</span>,</div>
+              <div>  "filters": { "languages": ["<span class="text-blue-400">csharp</span>"] }</div>
+              <div class="text-gray-500">})</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ======================================================
+     CTA / FOOTER
+     ====================================================== -->
+<section class="py-28 relative overflow-hidden" aria-labelledby="cta-heading">
+  <div class="absolute inset-0 bg-gradient-to-t from-neon/[0.03] to-transparent pointer-events-none"></div>
+  <div class="max-w-3xl mx-auto px-6 text-center relative z-10">
+    <div class="reveal">
+      <h2 id="cta-heading" class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6">Ready to search your code<br/>by <span class="text-transparent bg-clip-text bg-gradient-to-r from-neon to-emerald-400">meaning</span>?</h2>
+      <p class="text-gray-400 text-lg mb-10">Open source. Privacy-first. No cloud required.</p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="https://github.com/spashx/abyss" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-neon text-abyss-950 font-semibold text-sm hover:bg-neonDim transition-all shadow-lg shadow-neon/20 hover:shadow-neon/40">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          Star on GitHub
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="group-hover:translate-x-1 transition-transform"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#quickstart" class="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-white/5 text-white font-semibold text-sm border border-white/10 hover:border-white/25 hover:bg-white/10 transition-all">
+          Read the docs
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="border-t border-border py-10 px-6" role="contentinfo" itemscope itemtype="https://schema.org/WPFooter">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+    <div class="flex items-center gap-3">
+      <div class="w-7 h-7 rounded-lg bg-neon/10 border border-neon/30 flex items-center justify-center">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00ff88" stroke-width="2" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      </div>
+      <span class="font-mono text-sm text-gray-500">ABYSS</span>
+    </div>
+    <p class="text-gray-600 text-xs">Open source under <a href="https://www.gnu.org/licenses/gpl-3.0.html" rel="license noopener" target="_blank" class="hover:text-gray-400 transition-colors">GNU GPLv3</a>. Built for developers who value privacy.</p>
+    <nav aria-label="Footer links" class="flex items-center gap-6">
+      <a href="https://github.com/spashx/abyss" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-white transition-colors" aria-label="Abyss on GitHub">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+      </a>
+    </nav>
+  </div>
+</footer>
+</main>
+
+
+<!-- ======================================================
+     JAVASCRIPT — Scroll reveal, navbar, mobile menu
+     ====================================================== -->
+<script>
+(function () {
+  'use strict';
+
+  /* ── Intersection Observer for reveal animations ── */
+  var revealObserver = new IntersectionObserver(function (entries) {
+    for (var i = 0; i < entries.length; i++) {
+      if (entries[i].isIntersecting) {
+        entries[i].target.classList.add('visible');
+        revealObserver.unobserve(entries[i].target);
+      }
+    }
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  var revealEls = document.querySelectorAll('.reveal');
+  for (var i = 0; i < revealEls.length; i++) {
+    revealObserver.observe(revealEls[i]);
+  }
+
+  /* ── Navbar border on scroll ── */
+  var navbar = document.getElementById('navbar');
+  var lastScroll = 0;
+  window.addEventListener('scroll', function () {
+    var scrollY = window.scrollY || window.pageYOffset;
+    if (scrollY > 40) {
+      navbar.style.borderBottomColor = '#21262d';
+    } else {
+      navbar.style.borderBottomColor = 'transparent';
+    }
+    lastScroll = scrollY;
+  }, { passive: true });
+
+  /* ── Mobile menu toggle ── */
+  var menuBtn = document.getElementById('mobile-menu-btn');
+  var mobileMenu = document.getElementById('mobile-menu');
+  menuBtn.addEventListener('click', function () {
+    mobileMenu.classList.toggle('hidden');
+  });
+
+  /* ── Close mobile menu on link click ── */
+  var mobileLinks = mobileMenu.querySelectorAll('a');
+  for (var j = 0; j < mobileLinks.length; j++) {
+    mobileLinks[j].addEventListener('click', function () {
+      mobileMenu.classList.add('hidden');
+    });
+  }
+
+  /* ── Smooth scroll for anchor links ── */
+  var anchors = document.querySelectorAll('a[href^="#"]');
+  for (var k = 0; k < anchors.length; k++) {
+    anchors[k].addEventListener('click', function (e) {
+      var href = this.getAttribute('href');
+      if (href === '#') return;
+      var target = document.querySelector(href);
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  }
+})();
+</script>
+
+</body>
+</html>
