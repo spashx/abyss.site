@@ -1116,6 +1116,7 @@
             <div class="w-3 h-3 rounded-full" style="background:#28c840"></div>
             <span class="ml-2 text-xs text-gray-500 font-mono">analysis-prompt.md</span>
           </div>
+
           <div class="p-5 font-mono text-xs leading-relaxed text-gray-300 whitespace-pre-wrap">The ILSpy application is a .NET decompiler.
 The folder ILSpy contains the root application.
 
@@ -1123,7 +1124,7 @@ I need a detailed analysis on the <span class="text-neon">"Search"</span> featur
   1) Search pane UI and model
   2) Search result factory and filtering
 
-<span class="text-purple-400"># MANDATORY - KNOWLEDGE BASE USAGE</span>
+<span class="text-purple-400"># 1) MANDATORY - KNOWLEDGE BASE USAGE</span>
 For any information about ILSpy, ALWAYS USE the
 Abyss MCP server and its tools:
 
@@ -1131,25 +1132,26 @@ Abyss MCP server and its tools:
   - <span class="text-blue-400">query</span>            Semantic search + filtering
   - <span class="text-blue-400">list_sources</span>     List sources and filter values
 
-<span class="text-purple-400"># ACTIONS TO PERFORM</span>
-As a senior .NET architect:
+<span class="text-purple-400"># 2) ACTIONS TO PERFORM</span>
+As a seasoned expert in C#/.NET programming and professionnal senior software architect, perform these tasks:
 
-2.1 - Map all entities involved in Search
-      and identify their relationships.
+2.1) - search into the ABYSS knowledge base all entities (modules, classes, methods) implied with the " Search", "Search pane UI and model", "Search result factory and filtering". Identify the relations between this entities.
 
-2.2 - Identify main workflows (dynamic calls).
-      For each call, tag objects with C/R/U/D.
+2.2) - identify the main workflows (dynamic calls) between the entities that enable to fullfill the search features. For each call, identify the objects that are used (C/R/U/D)
 
-2.3 - For each feature, produce:
-      + Mermaid class diagram
-      + Mermaid sequence diagram
-      + CRUD reference table
+2.3) for each features, produce a mermaid class diagram representings the entities, a mermaid sequence diagram for the dynamics call, and the C/R/U/D status on used objects
 
-2.4 - Generate a professional HTML report:
-      + Executive summary
-      + Feature breakdowns with diagrams
-      + Quality &amp; security recommendations</div>
+2.4) Generate a slick, professional, HTML report with the informations above:
+- an executive summary about the report
+- the list of features and associated diagrams and informations
+- a list of recommendation (quality, cybersecurity) about the implementation of the features
+
+Overall it is HIGHLY IMPORTANT to have a PROFESSIONAL LOOKING REPORT.
+    
+    
+    </div>
         </div>
+
         <div class="rounded-xl bg-neon/5 border border-neon/20 p-4 text-sm text-gray-400">
           <span class="text-neon font-semibold">Zero manual exploration.</span> The agent autonomously issued multiple <code class="text-xs bg-surface px-1.5 py-0.5 rounded text-neon">query</code> and <code class="text-xs bg-surface px-1.5 py-0.5 rounded text-neon">list_sources</code> calls against the Abyss index to build the full picture before writing a single line of the report.
         </div>
